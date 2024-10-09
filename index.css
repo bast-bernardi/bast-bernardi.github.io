@@ -1,0 +1,136 @@
+.tache {
+    position: absolute;
+    opacity: 0.8;
+}
+
+.grande {
+	position: absolute; /* Position absolue pour fixer la tâche */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Prend 50% de la largeur de l'écran */
+    height: 150vh; /* Prend 100% de la hauteur de l'écran */
+    background-color: #faaafa;
+    clip-path:url(#myClipPath); /*path("M 0 0 H 1400 V 50 Q 1400 125 1300 150 l -130 40 Q 410 400 780 520 Q 1200 660 780 800 L 580 870 Q 300 970 0 800 Z"); /* Forme organique arrondie */
+    opacity: 0.9; /* Légère transparence */
+}
+
+.body { 
+	width : 100vw;
+	height : 200 VW
+}
+
+#entete{
+	z-index:2;
+	position: fixed;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: baseline;
+	font-family:arial;
+	width:96%;
+	height:8%;
+	background:white;
+	left:2%;
+	font-size: 100%;
+}
+
+#name{
+	font-size: 130%;
+	position : relative;
+}
+
+
+.entete{
+	position:relative;
+	color : black;
+	top : 10px;
+}
+
+.categories:hover{
+	color:#f250e5;
+	cursor:pointer;
+}
+
+.entete:hover{
+	cursor:pointer;
+}
+
+
+#container_entete {
+	Z-index:2;
+	position: fixed;
+	width:100%;
+	height:8%;
+	background:white;
+	left:0%;
+	top:0%;
+	border-bottom:2px solid;
+	border-color: #f250e5;
+}
+h1 {
+    color: white;
+    transition: opacity 1s ease-in-out;
+    opacity: 1;
+	position:absolute;
+	font-size:700%;
+	width:70vw;
+	text-align:center;
+}
+
+#petite {
+	width: 30vw;
+	height: 40vw;
+	background-color: #f250e5;
+	/* Appliquer le clip-path du SVG */
+	clip-path: url(#nuageClip);
+	font:arial;
+	position:absolute;
+	top:18%;
+	left:8%;
+}
+#oval {
+	width: 100%; /* Ajuste la taille à ta convenance */
+	height: auto;
+	border-radius: 50%; /* Rend l'image ovale */
+	position: absolute;
+	top: 5%; /* Positionnement en haut de la div */
+	left: 60%;
+	transform: translateX(-50%);
+}
+
+#nom {
+	color: white;
+	font-weight: bold;
+	font-size: 2.5em;
+	text-align: center;
+	margin-top: 5px; /* Ajuste l'espace par rapport à l'image */
+	position: absolute;
+	top:23vw;
+	left:7vw;
+}
+
+#horizontal-line {
+	width: 50px;
+	height: 2px;
+	background-color: white;
+	margin: 5px auto;
+	position: absolute;
+	top:26.5vw;
+	left:15vw;
+}
+
+#student-title {
+	color: white;
+	font-size: 2em;
+	text-align: center;
+	margin-top: 5px;
+	position: absolute;
+	top:27.5vw;
+	left:8vw;
+
+}
+
+a{
+text-decoration: underline;
+color:white;
+}
