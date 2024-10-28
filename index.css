@@ -1,3 +1,11 @@
+html{height:200vh;
+	max-height: 200vh;
+
+}
+
+
+
+
 .tache {
     position: absolute;
     opacity: 0.8;
@@ -12,11 +20,12 @@
     background-color: #faaafa;
     clip-path:url(#myClipPath); /*path("M 0 0 H 1400 V 50 Q 1400 125 1300 150 l -130 40 Q 410 400 780 520 Q 1200 660 780 800 L 580 870 Q 300 970 0 800 Z"); /* Forme organique arrondie */
     opacity: 0.9; /* Légère transparence */
+	overflow: hidden;
+	pointer-events: none;
 }
 
-.body { 
+body { 
 	width : 100vw;
-	height : 200 VW
 }
 
 #entete{
@@ -78,8 +87,8 @@ h1 {
 }
 
 #petite {
-	width: 30vw;
-	height: 40vw;
+	width: 35vw;
+	height: 45vw;
 	background-color: #f250e5;
 	/* Appliquer le clip-path du SVG */
 	clip-path: url(#nuageClip);
@@ -87,6 +96,7 @@ h1 {
 	position:absolute;
 	top:18%;
 	left:8%;
+	overflow: hidden;
 }
 #oval {
 	width: 100%; /* Ajuste la taille à ta convenance */
@@ -105,17 +115,17 @@ h1 {
 	text-align: center;
 	margin-top: 5px; /* Ajuste l'espace par rapport à l'image */
 	position: absolute;
-	top:23vw;
+	top:26vw;
 	left:7vw;
 }
 
 #horizontal-line {
-	width: 50px;
+	width: 80px;
 	height: 2px;
 	background-color: white;
 	margin: 5px auto;
 	position: absolute;
-	top:26.5vw;
+	top:29.5vw;
 	left:15vw;
 }
 
@@ -125,12 +135,169 @@ h1 {
 	text-align: center;
 	margin-top: 5px;
 	position: absolute;
-	top:27.5vw;
+	top:30.5vw;
 	left:8vw;
+	Z-index : 4;
 
 }
 
 a{
 text-decoration: underline;
 color:white;
+Z-index:10
+}
+
+a:hover{
+	cursor: pointer;
+	}
+.svg-shape {
+	position: absolute;
+	bottom: -100%;
+	left: 0;
+	width: 100%;
+	height: 120%; /* Ajuste la hauteur si nécessaire */
+	overflow: hidden;
+	pointer-events: none;
+}
+
+svg {
+	width: 100%;
+	height: 100%;
+	Z-index:1;
+	pointer-events: none;
+}
+
+#petite-tache {
+    width: 40vw; /* Ajuste la taille selon ton besoin */
+    height: 60vh;
+    background-color: #f250e5; /* Choisis la couleur que tu préfères */
+    position: absolute;
+    top: 140vh;
+    left: 80vw;
+    transform: translate(-50%, -50%);
+    clip-path: url(#petiteTacheClip);
+    overflow: hidden;
+
+}
+
+#text{
+    position:absolute;
+    text-align: justify;
+    top: 5vh;
+    left: 12vw;
+    width: 20vw;
+    height: 40vh;
+    color:white;
+    font-size:1.4em;
+	font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.btn-cv {
+	position:absolute;
+	top:40vh;
+	left:16vw;
+	background-color: #f250e5; /* Couleur de fond initiale */
+	color: white; /* Couleur du texte initiale */
+	padding: 2px 15px; /* Espacement interne */
+	border-radius: 25px; /* Bords arrondis */
+	text-align: center; /* Centrage du texte */
+	font-size: 1.4em; /* Taille du texte */
+	text-decoration: none; /* Suppression de la décoration de lien */
+	display: inline-block; /* Alignement du bouton */
+	cursor: pointer; /* Curseur en forme de main */
+	transition: background-color 0.3s, color 0.3s; /* Transition pour un effet fluide */
+	border: 2px solid white;
+}
+
+/* Style lors du survol */
+.btn-cv:hover {
+	background-color: white; /* Couleur de fond lors du survol */
+	color: #f250e5; /* Couleur du texte lors du survol (inversée) */
+ /* Ajout d'une bordure pour le contraste */
+}
+
+.btn-ink {
+	position:absolute;
+	top:39.7vh;
+	left:24vw;
+	background-color: white; /* Couleur de fond initiale */
+	color: #f250e5; /* Couleur du texte initiale */
+	padding: 2px 15px; /* Espacement interne */
+	border-radius: 25px; /* Bords arrondis */
+	text-align: center; /* Centrage du texte */
+	font-size: 0.8 em; /* Taille du texte */
+	text-decoration: none; /* Suppression de la décoration de lien */
+	display: inline-block; /* Alignement du bouton */
+	cursor: pointer; /* Curseur en forme de main */
+	transition: background-color 0.3s, color 0.3s; /* Transition pour un effet fluide */
+	border: 2px solid #f250e5;
+}
+
+/* Style lors du survol */
+.btn-ink:hover {
+	background-color: #f250e5; /* Couleur de fond lors du survol */
+	color: white; /* Couleur du texte lors du survol (inversée) */
+	border: 2px solid white;
+ /* Ajout d'une bordure pour le contraste */
+}
+
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f0f0f0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 200vh;
+	margin: 0;
+}
+
+.video-container {
+	position: absolute;
+	top:36vh;
+	left: 65vw;
+	width: 27vw;
+	height:28vw;
+	max-width: 800px;
+	padding-top: 56.25%;
+	/* Ratio 16:9 */
+	overflow: hidden;
+	max-height: 40vh;
+}
+
+.video-container iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 17vw;
+	border-radius: 10px;
+	border: none;
+}
+
+#pied-container{
+	position:absolute;
+	z-index:1;
+	top:191vh;
+	left:Opx;
+	width:100%;
+	height:9vh;
+	border-top:2px solid;
+	border-color: #f250e5;
+	background-color: white ;
+}
+
+#pied{
+	z-index:2;
+	position: absolute;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	font-family:arial;
+	width:96%;
+	height:65px;
+	background:white;
+	left:2%;
+	top:0;
+	align-items:center;
 }
