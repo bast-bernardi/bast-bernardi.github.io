@@ -5,6 +5,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="index.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
 </head>
 <body>
 <div id='container_entete'>
@@ -17,7 +18,9 @@
 <div class='entete categories' href=#>Other activities</div>
 </div>
 </div>
-
+<div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/lJIrF4YjHfQ?si=wT3LO_IKnID1x375" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 <div id="dynamic-shape" class="tache grande">
 <h1 id="welcome-title">Welcome</h1>
 <svg width="0" height="0">
@@ -37,7 +40,42 @@
     <img src="bastien.jpg" id="oval" />
     <div id="nom">Bastien  Bernardi</div>
     <div id="horizontal-line"></div>
-    <div id="student-title">Engineering Student <br> at <a href="https://www.enseeiht.fr/fr/index.html">Enseeiht</a></div>
+    <div id="student-title">Engineering Student <br> at <a href="https://www.enseeiht.fr/fr/index.html" target="_blank">Enseeiht</a></div>
+</div>
+</div>
+<div class="svg-shape">
+    <svg viewBox="0 -7 23 12" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M 0 3 C 2 2 2 2 3 2 C 13 2 7 -4 23 -6 L 23 5 L 0 5" fill="#faaafa" />
+    </svg>
+</div> >
+<div id="petite-tache" class="tache">
+    <div id="text">
+    My name is Bastien. I'm a student at ENSEEIHT, one of the top-ranking engineering graduate schools. 
+     For a while now, I have been growing increasingly concerned about climate change, which is why I am currently studying fluid mechanics.
+    </div>
+    <a href="https://exemple.com/mon-cv.pdf" class="btn-cv">CV</a>
+    <a href="https://exemple.com/mon-cv.pdf" class="btn-ink"><i class="fab fa-linkedin fa-2x"></i></a>
+</div>
+    
+    <svg width="0" height="0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1">
+        <defs>
+            <clipPath id="petiteTacheClip" clipPathUnits="objectBoundingBox">
+                <!-- Chemin mis à jour pour s'assurer qu'il couvre toute la zone -->
+                <path d="M 0.2 0.1 
+                A 0.1 0.1 0 0 1 0.3 0 
+                C 0.1 0 0 0 0.5 0 
+                C 0.8 0 0.9 0.1 0.9 0.4 
+                C 0.9 0.6 0.9 0.8 0.5 0.8 
+                C 0.2 0.8 0.3 0.6 0.2 0.1 Z" />
+            </clipPath>
+        </defs>
+    </svg>
+<div id="pied-container">
+ <div id='pied'>
+        <div class='copyright'>
+            <span class="copyright-circle">©</span> Bastien bernardi
+        </div>
+    <div class='contact' >bastien.bernardi@etu-inp.fr  </div>
 </div>
 </div>
 <script src="tache_dynamique.js"></script>
