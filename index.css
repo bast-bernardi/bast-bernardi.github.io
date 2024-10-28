@@ -55,6 +55,7 @@ body {
 	position:relative;
 	color : black;
 	top : 10px;
+	text-decoration:none;
 }
 
 .categories:hover{
@@ -304,6 +305,3 @@ body {
 	align-items:center;
 }
 
-.entete{
-	text-decoration:none;
-}
