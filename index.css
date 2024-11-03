@@ -102,12 +102,12 @@ h1 {
 	overflow: hidden;
 }
 #oval {
-	width: 100%; /* Ajuste la taille à ta convenance */
+	width: 80%; /* Ajuste la taille à ta convenance */
 	height: auto;
 	border-radius: 50%; /* Rend l'image ovale */
 	position: absolute;
 	top: 5%; /* Positionnement en haut de la div */
-	left: 60%;
+	left: 53%;
 	transform: translateX(-50%);
 }
 
