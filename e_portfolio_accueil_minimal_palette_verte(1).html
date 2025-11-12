@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home — Bastien Bernardi E‑Portfolio</title>
+  <meta name="description" content="Minimal landing page for an engineering student e‑portfolio: photo, intro, CV, LinkedIn, and navigation." />
+  <style>
+    :root{
+      --page-bg:#fdfdfd;
+      --surface:#ffffff;
+      --text:#111417;
+      --muted:#5f6b66;
+      --g50:#ecfdf5; --g100:#d1fae5; --g200:#a7f3d0; --g300:#6ee7b7;
+      --g400:#34d399; --g500:#10b981; --g600:#059669; --g700:#047857; --g800:#065f46;
+      --accent: var(--g600);
+      --ring: rgba(16,185,129,.35);
+      --radius: 18px; --radius-sm:12px; --maxw: 900px;
+      --shadow: 0 6px 24px rgba(17,20,23,.06);
+      --border:#e7ecea;
+    }
+    html,body{height:100%}
+    body{
+      margin:0; background: var(--page-bg); color:var(--text);
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial;
+      line-height:1.6; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Sticky navigation */
+    .nav{ position:sticky; top:0; z-index:40; background: rgba(255,255,255,.9); backdrop-filter: blur(8px);
+          border-bottom:1px solid var(--border); }
+    .nav-inner{ max-width:var(--maxw); margin:0 auto; padding:10px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .brand{ display:flex; align-items:center; gap:10px; color:var(--text); text-decoration:none; font-weight:700; }
+    .brand svg{ width:22px; height:22px; }
+    .nav ul{ list-style:none; display:flex; gap:8px; margin:0; padding:0; }
+    .nav .link{ padding:8px 12px; border-radius:10px; border:1px solid transparent; font-size:15px; color:var(--text); text-decoration:none; }
+    .nav .link:hover, .nav .link:focus{ background: var(--g50); border-color:#d8f3e6; }
+
+    .wrap{min-height:100%; display:grid; place-items:center; padding:28px}
+    .card{width:100%; max-width:var(--maxw); background:var(--surface);
+          border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow);
+          display:grid; grid-template-columns: 160px 1fr; gap:24px; padding:28px; align-items:center; }
+    @media (max-width: 720px){ .card{ grid-template-columns:1fr; text-align:center; } }
+
+    .avatar{ width:160px; height:160px; border-radius:22px; background:
+              linear-gradient(145deg, var(--g800), var(--g600)); border:2px solid rgba(0,0,0,.06);
+              overflow:hidden; display:grid; place-items:center; }
+    .avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+    h1{ margin:0 0 6px; font-size: clamp(26px, 4vw, 36px); letter-spacing:.2px; }
+    .subtitle{ margin:0 0 14px; color:var(--muted); font-size:15px; }
+
+    .intro{ margin: 0 0 18px; font-size: 16px; max-width: 60ch; }
+    @media (max-width:720px){ .intro{ max-width: 100%; margin-inline:auto; } }
+
+    .actions{ display:flex; gap:12px; flex-wrap:wrap; }
+    .btn{ display:inline-flex; align-items:center; gap:10px; text-decoration:none; color:var(--text);
+          padding:10px 16px; border-radius:12px; border:1px solid rgba(52,211,153,.35);
+          background:linear-gradient(180deg, rgba(52,211,153,.18), rgba(52,211,153,.12)); font-weight:600; font-size:15px; }
+    .btn:hover{ border-color: rgba(52,211,153,.55); background:linear-gradient(180deg, rgba(52,211,153,.26), rgba(52,211,153,.16)); }
+    .btn.primary{ background:linear-gradient(180deg, var(--g500), var(--g600)); border-color: var(--g700); color:#fff; }
+    .btn.primary:hover{ background:linear-gradient(180deg, var(--g400), var(--g600)); }
+
+    .links-min{ margin-top:16px; color:var(--muted); font-size:14px; }
+    .links-min a{ color:var(--g600); text-decoration:none; }
+    .links-min a:hover{ text-decoration:underline; }
+
+    .footer{ margin-top:22px; text-align:center; color:var(--muted); font-size:13px; }
+
+    a:focus-visible, .btn:focus-visible{ outline:none; box-shadow:0 0 0 3px var(--ring); }
+
+    @media print{
+      body{ background:#fff; color:#000; }
+      .nav, .links-min, .footer{ display:none; }
+      .card{ border:none; box-shadow:none; }
+      .btn{ display:none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav" role="banner">
+    <div class="nav-inner">
+      <a class="brand" href="#" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 13c6-8 12-8 16-8-2 8-8 16-16 16 0-3 0-6 0-8z" fill="url(#g)"/><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#10b981"/><stop offset="1" stop-color="#065f46"/></linearGradient></defs></svg>
+        <span>Portfolio</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a class="link" href="education.html">Education</a></li>
+          <li><a class="link" href="experiences.html">Past Experiences & Projects</a></li>
+          <li><a class="link" href="engagement.html">Sustainability & Civic Engagement</a></li>
+          <li><a class="link" href="mobility.html">International Mobility</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card" aria-labelledby="title">
+      <div class="avatar" aria-hidden="true">
+        <img src="/photo.jpg" alt="Portrait of Bastien Bernardi" />
+        <svg viewBox="0 0 24 24" width="72" height="72" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="#a5f3c9"/><path d="M4 22c0-4.418 3.582-8 8-8s8 3.582 8 8" fill="#6ee7b7"/></svg>
+      </div>
+      <div>
+        <h1 id="title">Bastien BERNARDI</h1>
+        <p class="subtitle">Engineering Student — Fluid Mechanics · ENSEEIHT · Expected graduation 2027</p>
+        <p class="intro">
+My name is Bastien. I'm a student at ENSEEIHT, one of the top-ranking engineering graduate schools. For a while now, I have been growing increasingly concerned about <strong>climate change</strong>, which is why I am currently studying <strong>fluid mechanics</strong>. </p>
+        <div class="actions" aria-label="Main links">
+          <a class="btn primary" href="cv.pdf" download aria-label="Download CV in PDF">Download CV</a>
+          <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="Open my LinkedIn profile">LinkedIn</a>
+        </div>
+        <p class="links-min">More sections coming soon: <em>Education</em>, <em>Past Experiences & Projects</em>, <em>Sustainability & Civic Engagement</em>, and <em>International Mobility</em>.</p>
+      </div>
+    </section>
+    <p class="footer">© <span id="y"></span> Bastien Bernardi</p>
+  </main>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
