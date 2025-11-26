@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>International Mobility — Engineering E-Portfolio</title>
+  <meta name="description" content="International mobility of an engineering student: NebrijaMUN experience and upcoming international projects visualized on a map." />
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <style>
+    :root{
+      --page-bg:#fdfdfd; --surface:#ffffff; --surface-soft:#f7faf9; --text:#111417; --muted:#5f6b66;
+      --g50:#ecfdf5; --g100:#d1fae5; --g200:#a7f3d0; --g300:#6ee7b7; --g400:#34d399; --g500:#10b981; --g600:#059669; --g700:#047857; --g800:#065f46;
+      --accent: var(--g600); --ring: rgba(16,185,129,.35);
+      --radius: 16px; --radius-lg: 22px; --maxw: 1000px; --border:#e7ecea; --shadow: 0 6px 24px rgba(17,20,23,.06);
+    }
+    html,body{height:100%}
+    body{ margin:0; background:var(--page-bg); color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial; line-height:1.6; }
+
+    .nav{ position:sticky; top:0; z-index:40; background:rgba(255,255,255,.9); backdrop-filter:blur(8px); border-bottom:1px solid var(--border); }
+    .nav-inner{ max-width:var(--maxw); margin:0 auto; padding:10px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .brand{ display:flex; align-items:center; gap:10px; color:var(--text); text-decoration:none; font-weight:700; }
+    .brand svg{ width:22px; height:22px; }
+    .nav ul{ list-style:none; display:flex; gap:8px; margin:0; padding:0; }
+    .nav .link{ padding:8px 12px; border-radius:10px; border:1px solid transparent; font-size:15px; color:var(--text); text-decoration:none; }
+    .nav .link:hover, .nav .link:focus{ background: var(--g50); border-color:#d8f3e6; }
+
+    .wrap{ max-width:var(--maxw); margin:0 auto; padding:28px 16px 40px; }
+    h1{ margin:8px 0 4px; font-size: clamp(24px, 4vw, 32px); }
+    .subtitle{ margin:0 0 18px; color:var(--muted); font-size:15px; }
+
+    .back{ display:inline-flex; align-items:center; gap:8px; font-size:14px; text-decoration:none; color:var(--g700); padding:8px 12px; border:1px solid #d8f3e6; border-radius:10px; background:var(--g50); }
+    .back:hover{ background:#d1fae5; }
+
+    /* Map section */
+    .map-wrapper{ margin-top:20px; margin-bottom:26px; }
+    .map-head{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:10px; }
+    .map-head h2{ margin:0; font-size:18px; }
+    .map-legend{ font-size:13px; color:var(--muted); display:flex; flex-wrap:wrap; gap:10px; }
+    .legend-item{ display:inline-flex; align-items:center; gap:6px; }
+    .dot{ width:10px; height:10px; border-radius:999px; }
+    .dot.green{ background:#16a34a; }
+    .dot.orange{ background:#f97316; }
+
+    #mobility-map{ width:100%; height:360px; border-radius:18px; border:1px solid var(--border); box-shadow:var(--shadow); overflow:hidden; }
+
+    /* NebrijaMUN feature block */
+    .feature{ margin-top:24px; display:grid; grid-template-columns: minmax(0,3fr) minmax(0,2fr); gap:22px; align-items:stretch; }
+    @media (max-width:880px){ .feature{ grid-template-columns:1fr; } }
+
+    .feature-main{ background:var(--surface); border-radius:var(--radius-lg); border:1px solid var(--border); box-shadow:var(--shadow); padding:20px 20px 18px; position:relative; overflow:hidden; }
+    .badge{ display:inline-flex; align-items:center; gap:6px; padding:4px 10px; border-radius:999px; background:var(--g50); color:#065f46; font-size:12px; border:1px solid #bbf7d0; }
+    .badge-dot{ width:8px; height:8px; border-radius:999px; background:#22c55e; }
+    .feature-main h2{ margin:10px 0 4px; font-size:22px; }
+    .meta{ font-size:13px; color:var(--muted); margin:0 0 12px; }
+    .cols{ display:grid; grid-template-columns: minmax(0,3fr) minmax(0,2fr); gap:16px; }
+    @media (max-width:640px){ .cols{ grid-template-columns:1fr; } }
+    .list{ margin:0 0 10px 18px; }
+    .pill-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+    .pill{ font-size:12px; padding:4px 8px; border-radius:999px; background:var(--g50); border:1px solid #d8f3e6; color:#064e3b; }
+
+    .feature-side{ background:var(--surface-soft); border-radius:var(--radius); border:1px dashed var(--border); padding:16px; }
+    .label{ font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-bottom:6px; }
+    .highlights{ margin:0 0 8px 16px; font-size:14px; }
+
+    /* Roadmap for upcoming mobility */
+    .roadmap{ margin-top:32px; background:var(--surface); border-radius:var(--radius-lg); border:1px solid var(--border); box-shadow:var(--shadow); padding:18px 18px 20px; }
+    .roadmap-head{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:10px; }
+    .roadmap-head h2{ margin:0; font-size:20px; }
+    .status{ font-size:13px; color:var(--muted); }
+
+    .steps{ display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:14px; margin-top:10px; }
+    @media (max-width:880px){ .steps{ grid-template-columns:1fr; } }
+
+    .step{ position:relative; padding:14px 12px 12px; border-radius:14px; background:var(--surface-soft); border:1px solid var(--border); }
+    .step-num{ width:22px; height:22px; border-radius:999px; border:1px solid #bbf7d0; background:var(--g50); display:flex; align-items:center; justify-content:center; font-size:12px; color:#047857; margin-bottom:6px; }
+    .step h3{ margin:0 0 4px; font-size:15px; }
+    .step .when{ font-size:13px; color:var(--muted); margin-bottom:6px; }
+    .step p{ margin:0 0 6px; font-size:14px; }
+    .step .skills{ display:flex; flex-wrap:wrap; gap:6px; margin-top:4px; }
+    .chip{ font-size:11px; padding:3px 7px; border-radius:999px; background:var(--g50); border:1px solid #bae6fd33; color:#075985; }
+
+    @media print{ .nav, .back, #mobility-map, .map-head{ display:none; } .feature-main, .roadmap{ box-shadow:none; } }
+  </style>
+</head>
+<body>
+  <header class="nav" role="banner">
+    <div class="nav-inner">
+      <a class="brand" href="index.html" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 13c6-8 12-8 16-8-2 8-8 16-16 16 0-3 0-6 0-8z" fill="url(#g)"/><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#10b981"/><stop offset="1" stop-color="#065f46"/></linearGradient></defs></svg>
+        <span>Portfolio</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a class="link" href="education.html">Education</a></li>
+          <li><a class="link" href="experiences.html">Past Experiences & Projects</a></li>
+          <li><a class="link" href="engagement.html">Sustainability & Civic Engagement</a></li>
+          <li><a class="link" href="mobility.html" aria-current="page">International Mobility</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <a class="back" href="index.html">← Back to home</a>
+    <h1>International Mobility</h1>
+    <p class="subtitle">One completed experience and several potential projects, visualized on a map and detailed below.</p>
+
+    <!-- Interactive map of Europe -->
+    <section class="map-wrapper" aria-labelledby="map-title">
+      <div class="map-head">
+        <h2 id="map-title">Mobility Map — Europe</h2>
+        <div class="map-legend" aria-label="Legend">
+          <span class="legend-item"><span class="dot green"></span> Completed mobility</span>
+          <span class="legend-item"><span class="dot orange"></span> Potential mobility</span>
+        </div>
+      </div>
+      <div id="mobility-map" role="img" aria-label="Map of Europe showing current and potential mobility locations"></div>
+    </section>
+
+    <!-- NebrijaMUN feature -->
+    <section class="feature" aria-labelledby="nebrija-title">
+      <article class="feature-main">
+        <span class="badge"><span class="badge-dot" aria-hidden="true"></span> Completed experience</span>
+        <h2 id="nebrija-title">NebrijaMUN — Model United Nations Conference</h2>
+        <p class="meta">Universidad Nebrija — Madrid, Spain · <time datetime="2024-03">March 20XX</time> · Role: Delegate of Portugal in UNICEF committee</p>
+        <div class="cols">
+          <div>
+            <ul class="list">
+              <li>Debated international issues in English within a multicultural committee setting.</li>
+              <li>Prepared position papers and drafted resolutions collaboratively.</li>
+              <li>Developed argumentation, negotiation, and public speaking skills.</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill">Public speaking</span>
+              <span class="pill">Diplomacy</span>
+              <span class="pill">Team negotiation</span>
+            </div>
+          </div>
+          <div>
+            <p style="margin:0 0 6px;font-size:14px;">Key learning outcomes:</p>
+            <ul class="list">
+              <li>Improved confidence when speaking English in front of an audience.</li>
+              <li>Better understanding of diplomatic processes and UN-style procedures.</li>
+              <li>Stronger ability to work with people from diverse backgrounds.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <aside class="feature-side" aria-label="Snapshot">
+        <div class="label">Snapshot</div>
+        <ul class="highlights">
+          <li><strong>Location:</strong> Madrid, Spain</li>
+          <li><strong>Duration:</strong> 4 days </li>
+          <li><strong>Language:</strong> English</li>
+          <li><strong>Format:</strong> Model United Nations (MUN)</li>
+        </ul>
+        <div class="label">What it shows</div>
+        <ul class="highlights">
+          <li>Ability to adapt quickly to an international academic environment.</li>
+          <li>Interest in global issues and multilateral cooperation.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <!-- Upcoming mobility projects -->
+    <section class="roadmap" aria-labelledby="roadmap-title">
+      <div class="roadmap-head">
+        <h2 id="roadmap-title">Upcoming International Projects</h2>
+        <span class="status">Status: potential (details to be confirmed)</span>
+      </div>
+      <p class="subtitle" style="margin-top:0;">These items are not finalized yet but outline how I plan to expand my international exposure during my studies.</p>
+
+      <div class="steps" aria-label="Planned mobility steps">
+        <!-- Step 1: Athens -->
+        <article class="step">
+          <div class="step-num">1</div>
+          <h3>Gap-Year Exchange — Athens, Greece</h3>
+          <div class="when">Target: gap year 2026/2027</div>
+          <p>Planned university exchange of 6 mounth in Athens during this gap year, with a focus on naval engineering courses taught in English and immersion in Greek academic life.</p>
+          <div class="skills">
+            <span class="chip">Full-year exchange</span>
+            <span class="chip">English-taught courses</span>
+            <span class="chip">Cultural immersion</span>
+          </div>
+        </article>
+
+        <!-- Step 2: Bucharest -->
+        <article class="step">
+          <div class="step-num">2</div>
+          <h3>Gap-Year Exchange — Bucharest, Romania</h3>
+          <div class="when">Target: gap year 2026/2025</div>
+          <p>Potential 6 mounths exchange in Bucharest with a mix of technical courses and discovery of Eastern European perspectives on engineering and innovation.</p>
+          <div class="skills">
+            <span class="chip">Central/Eastern Europe</span>
+            <span class="chip">New academic network</span>
+            <span class="chip">Adaptability</span>
+          </div>
+        </article>
+
+        <!-- Step 3: Italy OFE -->
+        <article class="step">
+          <div class="step-num">3</div>
+          <h3>Italy — PFE in Fluid Mechanics (in English)</h3>
+          <div class="when">Target: during engineering curriculum</div>
+          <p>Possible end of study internship (PFE) in Italy, focusing on fluid mechanics and with english speaking environement</p>
+          <div class="skills">
+            <span class="chip">Fluid mechanics</span>
+            <span class="chip">Technical English</span>
+            <span class="chip">Short-term mobility</span>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script>
+    // Initialize map centered on Europe
+    const map = L.map('mobility-map', {
+      scrollWheelZoom: false
+    }).setView([47.0, 10.0], 4);
+
+    // Tiles (OpenStreetMap)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    function addCircleMarker(lat, lng, color, title, description) {
+      const marker = L.circleMarker([lat, lng], {
+        radius: 8,
+        color: color,
+        fillColor: color,
+        fillOpacity: 0.9
+      }).addTo(map);
+      marker.bindPopup(`<strong>${title}</strong><br>${description}`);
+    }
+
+    // Completed: Madrid (NebrijaMUN)
+    addCircleMarker(
+      40.4168,
+      -3.7038,
+      '#16a34a',
+      'Madrid, Spain — NebrijaMUN',
+      'Completed Model United Nations conference at Universidad Nebrija.'
+    );
+
+    // Planned: Athens
+    addCircleMarker(
+      37.9838,
+      23.7275,
+      '#f97316',
+      'Athens, Greece — Planned exchange',
+      'Possible gap-year university exchange (naval engineering courses in English).'
+    );
+
+    // Planned: Bucharest
+    addCircleMarker(
+      44.4268,
+      26.1025,
+      '#f97316',
+      'Bucharest, Romania — Planned exchange',
+      'Possible gap-year exchange combining technical courses and cultural discovery.'
+    );
+
+    // Planned: Italy (placeholder city, e.g. Bologna)
+    addCircleMarker(
+      44.4949,
+      11.3426,
+      '#f97316',
+      'Italy — PFE in Fluid Mechanics (planned)',
+      'Possible end of study internship (PFE) in Italy in english speakig environnement.'
+    );
+  </script>
+</body>
+</html>
+
