@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Past Experiences & Projects — Bastien Bernardi</title>
+  <meta name="description" content="Internships, associative experience, and project sections with image previews for an engineering student portfolio." />
+  <style>
+    :root{
+      --page-bg:#fdfdfd; --surface:#ffffff; --text:#111417; --muted:#5f6b66;
+      --g50:#ecfdf5; --g100:#d1fae5; --g200:#a7f3d0; --g300:#6ee7b7; --g400:#34d399; --g500:#10b981; --g600:#059669; --g700:#047857; --g800:#065f46;
+      --accent: var(--g600); --ring: rgba(16,185,129,.35);
+      --radius: 16px; --radius-lg: 20px; --maxw: 1000px; --border:#e7ecea; --shadow: 0 6px 24px rgba(17,20,23,.06);
+    }
+    html,body{height:100%}
+    body{ margin:0; background:var(--page-bg); color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial; line-height:1.6; }
+
+    /* Sticky nav */
+    .nav{ position:sticky; top:0; z-index:40; background:rgba(255,255,255,.9); backdrop-filter:blur(8px); border-bottom:1px solid var(--border); }
+    .nav-inner{ max-width:var(--maxw); margin:0 auto; padding:10px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .brand{ display:flex; align-items:center; gap:10px; color:var(--text); text-decoration:none; font-weight:700; }
+    .brand svg{ width:22px; height:22px; }
+    .nav ul{ list-style:none; display:flex; gap:8px; margin:0; padding:0; }
+    .nav .link{ padding:8px 12px; border-radius:10px; border:1px solid transparent; font-size:15px; color:var(--text); text-decoration:none; }
+    .nav .link:hover, .nav .link:focus{ background: var(--g50); border-color:#d8f3e6; }
+
+    .wrap{ max-width:var(--maxw); margin:0 auto; padding:28px 16px 40px; }
+    h1{ margin:8px 0 4px; font-size: clamp(24px, 4vw, 32px); }
+    .subtitle{ margin:0 0 18px; color:var(--muted); font-size:15px; }
+
+    /* Section blocks */
+    .sec{ margin-top:32px; }
+    .sec-head{ display:flex; align-items:end; justify-content:space-between; gap:12px; margin-bottom:12px; }
+    .sec-head h2{ margin:0; font-size:20px; }
+    .hint{ color:var(--muted); font-size:13px; }
+
+    .grid{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+    @media (max-width:860px){ .grid{ grid-template-columns:1fr; } }
+
+    .card{ background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column; }
+    .preview{ width:100%; height:150px; background:#eaf7f0 center/cover no-repeat; }
+    .content{ padding:16px; flex:1; display:flex; flex-direction:column; }
+
+    .head{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .role{ margin:0; font-size:18px; }
+    .period{ font-size:13px; color:var(--muted); white-space:nowrap; }
+    .meta{ font-size:13px; color:var(--muted); margin:6px 0 10px; }
+    .bullets{ margin:0 0 8px 18px; }
+    .tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:auto; padding-top:8px; }
+    .tag{ font-size:12px; padding:4px 8px; border-radius:999px; background: var(--g50); color:#064e3b; border:1px solid #d8f3e6; }
+
+    .back{ display:inline-flex; align-items:center; gap:8px; font-size:14px; text-decoration:none; color:var(--g700); padding:8px 12px; border:1px solid #d8f3e6; border-radius:10px; background:var(--g50); }
+    .back:hover{ background:#d1fae5; }
+
+    @media print{ .nav, .back{ display:none; } .card{ box-shadow:none; } }
+  </style>
+</head>
+<body>
+  <header class="nav" role="banner">
+    <div class="nav-inner">
+      <a class="brand" href="index.html" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 13c6-8 12-8 16-8-2 8-8 16-16 16 0-3 0-6 0-8z" fill="url(#g)"/><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#10b981"/><stop offset="1" stop-color="#065f46"/></linearGradient></defs></svg>
+        <span>Portfolio</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a class="link" href="education.html">Education</a></li>
+          <li><a class="link" href="experiences.html" aria-current="page">Past Experiences & Projects</a></li>
+          <li><a class="link" href="engagement.html">Sustainability & Civic Engagement</a></li>
+          <li><a class="link" href="mobility.html">International Mobility</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <a class="back" href="index.html">← Back to home</a>
+    <h1>Past Experiences & Projects</h1>
+    <p class="subtitle">Internships, associative experience, and projects</p>
+
+    <!-- Internships -->
+    <section class="sec" aria-labelledby="internships-title">
+      <div class="sec-head">
+        <h2 id="internships-title">Internships</h2>
+        <span class="hint">Two professional experiences completed so far.</span>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="preview" style="background-image:url('architecte.png')"></div>
+          <div class="content">
+            <div class="head"><h3 class="role">Observation Internship — Architecture</h3><div class="period">feb 2019</div></div>
+            <div class="meta">Akmo Design — Eschau, France</div>
+            <ul class="bullets">
+              <li>First introduction to the professional world</li>
+              <li>Introduction to the field of architecture</li>
+            </ul>
+            <div class="tags"><span class="tag">Observation</span><span class="tag">First experience</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="preview" style="background-image:url('escape.png')"></div>
+          <div class="content">
+            <div class="head"><h3 class="role">Immersive entertainment internship — Escape room</h3><div class="period">Jun–July 2025</div></div>
+            <div class="meta">Company Name — City, Country</div>
+            <ul class="bullets">
+              <li>6 weeks internship</li>
+              <li>First experience involving direct contact with clients</li>
+              <li>Insight into the functioning of a small business.</li>
+            </ul>
+            <div class="tags"><span class="tag">Client relation</span><span class="tag">6 weeks</span><span class="tag">Small business</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Associative Experience -->
+    <section class="sec" aria-labelledby="asso-title">
+      <div class="sec-head">
+        <h2 id="asso-title">Associative Experience</h2>
+        <span class="hint">Clubs, student unions, volunteering — four experiences.</span>
+      </div>
+      <div class="grid">
+        <article class="card"><div class="preview" style="background-image:url('Champollion.jpg')"></div><div class="content"><div class="head"><h3 class="role">BDP Champollion — Treasurer</h3><div class="period">Jun 2023 – Jun 202'</div></div><div class="meta">Student association — Lycée Champollion · Grenoble</div><ul class="bullets"><li>Oversaw the financial management of events attended by over 1,000 participants.</li><li>Optimized budget and vendor contracts.</li><li>Management of the association’s inventory</li></ul><div class="tags"><span class="tag">Leadership</span><span class="tag">Budgeting</span></div></div></article>
+        <article class="card"><div class="preview" style="background-image:url('N7.jpg')"></div><div class="content"><div class="head"><h3 class="role">BDA ENSEEIHT — Secretary</h3><div class="period">Apr 2025 – Apr 2026</div></div><div class="meta">Student association — ENSEEIHT · Toulouse</div><ul class="bullets"><li>Internal communications management within the BDA</li><li>Management of volunteer teams during our events </li><li>Design and creation of decorations for various events</li></ul><div class="tags"><span class="tag">Art</span><span class="tag">Teamwork</span></div></div></article>
+        <article class="card"><div class="preview" style="background-image:url('INP.jpeg')"></div><div class="content"><div class="head"><h3 class="role">AE INP — Vice-president</h3><div class="period">May 2025 – May 2026</div></div><div class="meta">Student association of INP Toulouse — Toulouse</div><ul class="bullets"><li>Representation of students on various governance bodies of INP Toulouse</li><li>Organisation of events open to all INP Toulouse student</li><li>Discussions with all student associations of INP Toulouse</li></ul><div class="tags"><span class="tag">Representation</span><span class="tag">Event organisation</span></div></div></article>
+        <article class="card"><div class="preview" style="background-image:url('Theatre2.jpg')"></div><div class="content"><div class="head"><h3 class="role">Theater Club — President</h3><div class="period">May 2025 – May 2026</div></div><div class="meta">ENSEEIHT — Toulouse</div><ul class="bullets"><li>Direction of theater plays</li><li>effective time management to meet deadlines</li></ul><div class="tags"><span class="tag">Theater</span><span class="tag">Director</span></div></div></article>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="sec" aria-labelledby="proj-title">
+      <div class="sec-head"><h2 id="proj-title">Projects</h2><span class="hint">Includes TIPE and first‑year project.</span></div>
+      <div class="grid">
+        <article class="card"><div class="preview" style="background-image:url('TIPE.jpg')"></div><div class="content"><div class="head"><h3 class="role">TIPE — Comparative study of rugby ball trajectory</h3><div class="period">2023-2024</div></div><div class="meta">CPGE — Topic: Sport and game</div><ul class="bullets"><li>Built and validated a model on Rugby ball trajectory</li><li>Solved equation using python</li><li>Delivered an oral presentation.</li></ul><div class="tags"><span class="tag">Modeling</span><span class="tag">Scientific method</span></div></div></article>
+        <article class="card"><div class="preview" style="background-image:url('project1.jpg')"></div><div class="content"><div class="head"><h3 class="role">First‑Year Project — Study of Fish ladder</h3><div class="period">2025</div></div><div class="meta">ENSEEIHT — Course: APP Hydraulique</div><ul class="bullets"><li>Designed a Fish ladder wich ould be use for Pyrenean trout</li><li>Delivered report and oral presentation.</li><li><a href='E2_rapFinal-1.pdf'>Report in French</a></li></ul><div class="tags"><span class="tag">Prototyping</span><span class="tag">Teamwork</span></div></div></article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
