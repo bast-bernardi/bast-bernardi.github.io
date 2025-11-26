@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sustainability & Civic Engagement — Engineering E-Portfolio</title>
+  <meta name="description" content="Civic engagement initiatives of an engineering student: volunteering, student life, and community actions." />
+  <style>
+    :root{
+      --page-bg:#fdfdfd; --surface:#ffffff; --text:#111417; --muted:#5f6b66;
+      --g50:#ecfdf5; --g100:#d1fae5; --g200:#a7f3d0; --g300:#6ee7b7; --g400:#34d399; --g500:#10b981; --g600:#059669; --g700:#047857; --g800:#065f46;
+      --accent: var(--g600); --ring: rgba(16,185,129,.35);
+      --radius: 16px; --radius-lg: 20px; --maxw: 1000px; --border:#e7ecea; --shadow: 0 6px 24px rgba(17,20,23,.06);
+    }
+    html,body{height:100%}
+    body{ margin:0; background:var(--page-bg); color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial; line-height:1.6; }
+
+    .nav{ position:sticky; top:0; z-index:40; background:rgba(255,255,255,.9); backdrop-filter:blur(8px); border-bottom:1px solid var(--border); }
+    .nav-inner{ max-width:var(--maxw); margin:0 auto; padding:10px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .brand{ display:flex; align-items:center; gap:10px; color:var(--text); text-decoration:none; font-weight:700; }
+    .brand svg{ width:22px; height:22px; }
+    .nav ul{ list-style:none; display:flex; gap:8px; margin:0; padding:0; }
+    .nav .link{ padding:8px 12px; border-radius:10px; border:1px solid transparent; font-size:15px; color:var(--text); text-decoration:none; }
+    .nav .link:hover, .nav .link:focus{ background: var(--g50); border-color:#d8f3e6; }
+
+    .wrap{ max-width:var(--maxw); margin:0 auto; padding:28px 16px 40px; }
+    h1{ margin:8px 0 4px; font-size: clamp(24px, 4vw, 32px); }
+    .subtitle{ margin:0 0 18px; color:var(--muted); font-size:15px; }
+
+    .sec{ margin-top:24px; }
+    .sec-head{ display:flex; align-items:end; justify-content:space-between; gap:12px; margin-bottom:12px; }
+    .sec-head h2{ margin:0; font-size:20px; }
+    .hint{ color:var(--muted); font-size:13px; }
+
+    .grid{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+    @media (max-width:860px){ .grid{ grid-template-columns:1fr; } }
+
+    .card{ background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column; }
+    .preview{ width:100%; height:150px; background:#eaf7f0 center/cover no-repeat; }
+    .content{ padding:16px; flex:1; display:flex; flex-direction:column; }
+
+    .head{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .role{ margin:0; font-size:18px; }
+    .period{ font-size:13px; color:var(--muted); white-space:nowrap; }
+    .meta{ font-size:13px; color:var(--muted); margin:6px 0 10px; }
+    .bullets{ margin:0 0 8px 18px; }
+    .tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:auto; padding-top:8px; }
+    .tag{ font-size:12px; padding:4px 8px; border-radius:999px; background: var(--g50); color:#064e3b; border:1px solid #d8f3e6; }
+
+    .back{ display:inline-flex; align-items:center; gap:8px; font-size:14px; text-decoration:none; color:var(--g700); padding:8px 12px; border:1px solid #d8f3e6; border-radius:10px; background:var(--g50); }
+    .back:hover{ background:#d1fae5; }
+
+    @media print{ .nav, .back{ display:none; } .card{ box-shadow:none; } }
+  </style>
+</head>
+<body>
+  <header class="nav" role="banner">
+    <div class="nav-inner">
+      <a class="brand" href="index.html" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 13c6-8 12-8 16-8-2 8-8 16-16 16 0-3 0-6 0-8z" fill="url(#g)"/><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#10b981"/><stop offset="1" stop-color="#065f46"/></linearGradient></defs></svg>
+        <span>Portfolio</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a class="link" href="education.html">Education</a></li>
+          <li><a class="link" href="experiences.html">Past Experiences & Projects</a></li>
+          <li><a class="link" href="engagement.html" aria-current="page">Sustainability & Civic Engagement</a></li>
+          <li><a class="link" href="mobility.html">International Mobility</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <a class="back" href="index.html">← Back to home</a>
+    <h1>Sustainability & Civic Engagement</h1>
+
+    <!-- Civic Engagement section -->
+    <section class="sec" aria-labelledby="civic-title">
+      <div class="sec-head">
+        <h2 id="civic-title">Civic Engagement</h2>
+        <span class="hint">Three main initiatives highlighting commitment to community and student life.</span>
+      </div>
+      <div class="grid">
+        <!-- Initiative 1 -->
+        <article class="card">
+          <div class="preview" style="background-image:url('civic1.jpg')"></div>
+          <div class="content">
+            <div class="head">
+              <h3 class="role">Cordée de la réussite — mentor</h3>
+              <div class="period">2024 – 2025</div>
+            </div>
+            <div class="meta">Cordée de la réussite — Collège Rosa Park · Toulouse</div>
+            <ul class="bullets">
+              <li>Delivered a sustainability awareness workshop in a middle school.</li>
+              <li>Conducted fluid mechanics experiment demonstrations. </li>
+            </ul>
+            <div class="tags"><span class="tag">Sharing</span><span class="tag">Mentoring</span></div>
+          </div>
+        </article>
+
+        <!-- Initiative 2 -->
+        <article class="card">
+          <div class="preview" style="background-image:url('civic2.png')"></div>
+          <div class="content">
+            <div class="head">
+              <h3 class="role">Volunteer — women7</h3>
+              <div class="period">juin 2025</div>
+            </div>
+            <div class="meta">Women7 — Toulouse</div>
+            <ul class="bullets">
+              <li>An event designed to inspire middle-school girls to explore engineering.</li>
+              <li>Facilitated activities organized by the Escape7 club.</li>
+              <li>Accompanied a group of middle-school girls during the visit to the Cité de l’Espace.</li>
+            </ul>
+            <div class="tags"><span class="tag">Volunteering</span></div>
+          </div>
+        </article>
+
+        <!-- Initiative 3 -->
+        <article class="card">
+          <div class="preview" style="background-image:url('civic3.jpg')"></div>
+          <div class="content">
+            <div class="head">
+              <h3 class="role">Tutor — ENSEEIHT</h3>
+              <div class="period">2025 – 2026</div>
+            </div>
+            <div class="meta">Tutoring session — ENSEEIHT · Toulouse</div>
+            <ul class="bullets">
+              <li>Provided tutoring sessions for a first-year student.</li>
+              <li>Delivered a weekly math support session.</li>
+            </ul>
+            <div class="tags"><span class="tag">tutoring</span><span class="tag">mathematics</span></div>
+          </div>
+        </article>
+
+        <!-- Placeholder for future sustainability content -->
+       <!-- <article class="card">
+          <div class="preview" style="background-image:url('img/sustainability-placeholder.jpg')"></div>
+          <div class="content">
+            <div class="head">
+              <h3 class="role">Sustainability — Daily actions (coming soon)</h3>
+              <div class="period">Ongoing</div>
+            </div>
+            <div class="meta">Transport, energy use, lifestyle choices</div>
+            <p class="bullets">This slot will later describe everyday sustainable habits such as cycling instead of driving, reducing waste, and conscious consumption.</p>
+            <div class="tags"><span class="tag">Sustainability</span><span class="tag">Everyday actions</span></div>
+          </div>
+        </article>-->
+
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+
+
