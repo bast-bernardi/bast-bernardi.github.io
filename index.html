@@ -32,7 +32,25 @@
     .nav-inner{ max-width:var(--maxw); margin:0 auto; padding:10px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
     .brand{ display:flex; align-items:center; gap:10px; color:var(--text); text-decoration:none; font-weight:700; }
     .brand svg{ width:22px; height:22px; }
-    .nav ul{ list-style:none; display:flex; gap:8px; margin:0; padding:0; }
+.nav nav { 
+  overflow-x: visible; 
+}
+
+.nav ul{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  list-style: none; 
+}
+
+/* 2) Petit écran : autoriser le scroll seulement si ça ne tient pas */
+@media (max-width: 900px){
+  .nav nav{
+    overflow-x: auto;              /* scroll uniquement si overflow */
+    -webkit-overflow-scrolling: touch;
+  }
+}
     .nav .link{ padding:8px 12px; border-radius:10px; border:1px solid transparent; font-size:15px; color:var(--text); text-decoration:none; }
     .nav .link:hover, .nav .link:focus{ background: var(--g50); border-color:#d8f3e6; }
 
@@ -99,7 +117,7 @@
   <main class="wrap">
     <section class="card" aria-labelledby="title">
       <div class="avatar" aria-hidden="true">
-        <img src="/bastien.jpg" alt="Portrait of Bastien Bernardi" />
+        <img src="bastien.jpg" alt="Portrait of Bastien Bernardi" />
         <svg viewBox="0 0 24 24" width="72" height="72" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="#a5f3c9"/><path d="M4 22c0-4.418 3.582-8 8-8s8 3.582 8 8" fill="#6ee7b7"/></svg>
       </div>
       <div>
@@ -111,7 +129,6 @@ My name is Bastien. I'm a student at ENSEEIHT, one of the top-ranking engineerin
           <a class="btn primary" href="Bastien-3.pdf" download aria-label="Download CV in PDF">Download CV</a>
           <a class="btn" href="https://www.linkedin.com/in/bastien-bernardi-172483273" target="_blank" rel="noopener" aria-label="Open my LinkedIn profile">LinkedIn</a>
         </div>
-        <p class="links-min">More sections coming soon: <em>Education</em>, <em>Past Experiences & Projects</em>, <em>Sustainability & Civic Engagement</em>, and <em>International Mobility</em>.</p>
       </div>
     </section>
     <p class="footer">© <span id="y"></span> Bastien Bernardi</p>
@@ -120,3 +137,4 @@ My name is Bastien. I'm a student at ENSEEIHT, one of the top-ranking engineerin
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
+
