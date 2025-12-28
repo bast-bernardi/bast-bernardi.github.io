@@ -20,7 +20,28 @@
     .nav-inner{ max-width:var(--maxw); margin:0 auto; padding:10px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
     .brand{ display:flex; align-items:center; gap:10px; color:var(--text); text-decoration:none; font-weight:700; }
     .brand svg{ width:22px; height:22px; }
-    .nav ul{ list-style:none; display:flex; gap:8px; margin:0; padding:0; }
+/* Navigation: une ligne, centrée, sans défilement inutile */
+.nav ul{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;      /* pas de retour à la ligne */
+  white-space: nowrap;    /* pas de coupure dans les libellés */
+  list-style: none;
+}
+
+/* Par défaut (écrans larges) : pas de scroll */
+.nav nav{
+  overflow-x: visible;
+}
+
+/* Sur écrans étroits : scroll seulement si nécessaire */
+@media (max-width: 900px){
+  .nav nav{
+    overflow-x: auto;                 /* scroll si overflow */
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
     .nav .link{ padding:8px 12px; border-radius:10px; border:1px solid transparent; font-size:15px; color:var(--text); text-decoration:none; }
     .nav .link:hover, .nav .link:focus{ background: var(--g50); border-color:#d8f3e6; }
 
@@ -142,5 +163,8 @@
   </main>
 </body>
 </html>
+
+
+
 
 
