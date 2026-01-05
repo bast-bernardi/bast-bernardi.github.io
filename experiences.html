@@ -53,6 +53,23 @@
     .back:hover{ background:#d1fae5; }
 
     @media print{ .nav, .back{ display:none; } .card{ box-shadow:none; } }
+
+    .btn-pdf{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:12px;
+  background:var(--g600);
+  color:white;
+  text-decoration:none;
+  font-size:14px;
+  border:1px solid var(--g700);
+}
+.btn-pdf:hover{
+  background:var(--g700);
+}
+
   </style>
 </head>
 <body>
@@ -76,6 +93,12 @@
 
   <main class="wrap">
     <a class="back" href="index.html">← Back to home</a>
+    <a href="ppp.pdf"
+   class="btn-pdf"
+   target="_blank"
+   rel="noopener noreferrer">
+  Mon projet personnel et professionnel
+</a>
     <h1>Past Experiences & Projects</h1>
     <p class="subtitle">Internships, associative experience, and projects</p>
 
